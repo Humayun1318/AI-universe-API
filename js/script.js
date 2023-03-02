@@ -3,7 +3,7 @@ const loadItems = async () => {
   const res = await fetch(url);
   const data = await res.json();
 
-//   const itemsContainer = document.getElementById("items-container");
+  //   const itemsContainer = document.getElementById("items-container");
   const showAllButton = document.getElementById("show-more");
   let items = data.data.tools.slice(0, 6); // initially show only 6 items
 
@@ -53,6 +53,7 @@ const displayItems = (items) => {
             <h2 class=" text-[#111111] font-semibold text-xl mb-2">${item.name}</h2>
             <p class="text-[#585858]"><i class="fa-solid fa-calendar-days mr-2"></i>${item.published_in}</p>
           </div>
+          
           <button class="rounded-full text-[#eb5757]" style="background-color: #FEF7F7; width: 50px; height: 50px">
             <i class="fa-solid fa-arrow-right"></i>
           </button>
