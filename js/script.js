@@ -23,21 +23,22 @@ const displayItems = (items) => {
   
   const itemsContainer = document.getElementById("items-container");
   itemsContainer.innerHTML = ""; // clear existing items before re-rendering
-
+let counter = 1;
   items.forEach((item) => {
     // console.log(item);
+    
     // create item card and append to container
     const itemDiv = document.createElement("div");
     itemDiv.classList.add(
       "card",
-      "shadow-xl",
+      "shadow-md",
       "bg-base-100",
       "p-6",
       "rounded-lg"
     );
     itemDiv.innerHTML = `
       <figure>
-        <img class="rounded"
+        <img class="rounded" style="width: 100%;height: 250px;"
           src="${item.image}"
           alt="Shoes"
         />
@@ -46,7 +47,7 @@ const displayItems = (items) => {
         <h2 class="card-title text-[#111111] not-italic font-semibold text-xl">Features</h2>
         <p>
           <ol class="list-decimal pl-8 text-[#585858] mt-2">
-            <li class="mb-1"> ${
+            <li class="mb-1">${
               item.features[0] ? item.features[0] : "No feature"
             }</li>
             <li class="mb-1">${
@@ -56,7 +57,7 @@ const displayItems = (items) => {
          </ol>
       </p>
       <hr class="border-b border-b-2 border-gray-400 my-4" >
-        <div class="card-actions flex justify-between">
+        <div class="card-actions flex justify-between  items-center">
           <div>
             <h2 class=" text-[#111111] font-semibold text-xl mb-2">${
               item.name ? item.name : "No name"
@@ -168,20 +169,20 @@ const displayItemDetails = (item) => {
                           <li class="font-normal text-sm text-[#585858]">
                           ${
                             item?.integrations
-                              ? item.integrations[0]
-                              : "No Integrations"
+                              ? item?.integrations[0]
+                              : "No data found"
                           }</li>
                           <li class="font-normal text-sm text-[#585858]">
                           ${
                             item?.integrations
-                              ? item.integrations[1]
-                              : "No Integrations"
+                              ? item?.integrations[1]
+                              : "No data found"
                           }</li>
                           <li class="font-normal text-sm text-[#585858]">
                           ${
                             item?.integrations
-                              ? item.integrations[2]
-                              : "No Integration"
+                              ? item?.integrations[2]
+                              : "No data found"
                           }</li>
                         </ul>
                       </div>
@@ -206,13 +207,13 @@ const displayItemDetails = (item) => {
         ${
           item?.input_output_examples
             ? item.input_output_examples[0].input
-            : "No input"
+            : "No Question"
         }</h3>
         <p class="text-center  text-xs text-[#585858]  font-normal">
         ${
           item?.input_output_examples
             ? item.input_output_examples[0].output
-            : "No output"
+            : "Not! Not Yet! Take a break!!!"
         }</p>
    </div>
 
