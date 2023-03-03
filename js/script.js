@@ -33,7 +33,7 @@ const displayItems = (items) => {
     );
     itemDiv.innerHTML = `
       <figure>
-        <img
+        <img class="rounded"
           src="${item.image}"
           alt="Shoes"
         />
@@ -71,7 +71,7 @@ const loadItemsDetails = async (id) => {
   const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
   const res = await fetch(url);
   const data = await res.json();
-  console.log(data);
+  displayItemDetails(data.data);
   toggleModal("modal-id");
 };
 function toggleModal(modalID) {
@@ -80,5 +80,50 @@ function toggleModal(modalID) {
   document.getElementById(modalID).classList.toggle("flex");
   document.getElementById(modalID + "-backdrop").classList.toggle("flex");
 }
+const displayItemDetails = item => {
+  const detailsDiv = document.getElementById("deatils");
+  detailsDiv.innerHTML = `
+  <div class="bg-blue-400 p-4 w-[50%]" style="background: rgba(235, 87, 87, 0.05);
+                    border: 1px solid #EB5757;border-radius: 16px;" id="modal-id-1">
+                    <p>${item.description}</p>
+                    <div class="flex flex-row gap-4 my-4">
+                    <p class="p-5 text-[#03A30A] font-bold text-center" style="background: #FFFFFF;border-radius: 16px;">
+                      ${item.pricing[0]}</p>
+                    <p class="p-5 text-[#F28927] font-bold text-center" style="background: #FFFFFF;border-radius: 16px;">
+                      ${item.pricing[1]}</p>
+                    <p class="p-5 text-[#EB5757] font-bold text-center" style="background: #FFFFFF;border-radius: 16px;">
+                      ${item.pricing[2]}</p>
+                    </div>
+                    <div class="grid grid-cols-2 w-full gap-4">
+                      <div class="">
+                        <h4>Feature</h4>
+                        <ul class="list-disc pl-8">
+                          <li>1</li>
+                          <li>2</li>
+                          <li>3</li>
+                        </ul>
+                      </div>
+                      <div class=" ">
+                        <h4>Integration</h4>
+                        <ul class="list-disc pl-8">
+                          <li>1</li>
+                          <li>2</li>
+                          <li>3</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bg-gray-300 p-4 w-[50%] " style="background: #FFFFFF;border: 1px solid #E7E7E7;
+                     border-radius: 16px;" id="modal-id-2">
+                     <div class=" " >
+                      <p class="relative bg-[#EB5757] ml-48 rounded" style="width: 140px;height: 32px;"></p>
+                      <img class="rounded w-full relative" src="triangle.png" alt="">
+                    </div>
+                    <h3 class="mt-4 mb-4 text-center">Lorem ipsum dolor sit amet.</h3>
+                    <p class="text-center">consectetur adipisicing elit. Explicabo, deleniti?</p>
+                  </div>
 
+  `;
+
+}
 loadItems();
