@@ -80,50 +80,55 @@ function toggleModal(modalID) {
   document.getElementById(modalID).classList.toggle("flex");
   document.getElementById(modalID + "-backdrop").classList.toggle("flex");
 }
-const displayItemDetails = item => {
+const displayItemDetails = (item) => {
+  const modalTitle = document.getElementById("modal-title");
+  modalTitle.innerText = item.tool_name;
   const detailsDiv = document.getElementById("deatils");
   detailsDiv.innerHTML = `
-  <div class="bg-blue-400 p-4 w-[50%]" style="background: rgba(235, 87, 87, 0.05);
+  <div class="bg-blue-400 p-4 md:w-[50%]" style="background: rgba(235, 87, 87, 0.05);
                     border: 1px solid #EB5757;border-radius: 16px;" id="modal-id-1">
                     <p>${item.description}</p>
-                    <div class="flex flex-row gap-4 my-4">
-                    <p class="p-5 text-[#03A30A] font-bold text-center" style="background: #FFFFFF;border-radius: 16px;">
-                      ${item.pricing[0]}</p>
-                    <p class="p-5 text-[#F28927] font-bold text-center" style="background: #FFFFFF;border-radius: 16px;">
-                      ${item.pricing[1]}</p>
-                    <p class="p-5 text-[#EB5757] font-bold text-center" style="background: #FFFFFF;border-radius: 16px;">
-                      ${item.pricing[2]}</p>
+                    <div class="md:flex md:flex-row gap-2  my-4 ">
+                    <p class="p-2 text-[#03A30A] font-bold text-sm text-center" style="background: #FFFFFF;border-radius: 16px;">
+                      <span>${item.pricing[0].price}</span><br><span>${item.pricing[0].plan}</span></p>
+                    <p class="p-2 text-[#F28927] font-bold text-sm text-center" style="background: #FFFFFF;border-radius: 16px;">
+                      <span>${item.pricing[1].price}</span><br><span>${item.pricing[1].plan}</span></p>
+                    <p class="p-2 text-[#EB5757] font-bold text-sm text-center" style="background: #FFFFFF;border-radius: 16px;">
+                      <span>${item.pricing[2].price}</span><br><span>${item.pricing[2].plan}</span></p>
                     </div>
-                    <div class="grid grid-cols-2 w-full gap-4">
+                    <div class="md:grid md:grid-cols-2 w-full  gap-4">
                       <div class="">
-                        <h4>Feature</h4>
-                        <ul class="list-disc pl-8">
-                          <li>1</li>
-                          <li>2</li>
-                          <li>3</li>
+                        <h4 >Feature</h4>
+                        <ul class="list-disc mt-3  pl-8">
+                          <li class="font-normal text-sm text-[#585858]">${item.features[1].feature_name}</li>
+                          <li class="font-normal text-sm text-[#585858]">${item.features[2].feature_name}</li>
+                          <li class="font-normal text-sm text-[#585858]">${item.features[3].feature_name}</li>
                         </ul>
                       </div>
                       <div class=" ">
-                        <h4>Integration</h4>
-                        <ul class="list-disc pl-8">
-                          <li>1</li>
-                          <li>2</li>
-                          <li>3</li>
+                        <h4 >Integration</h4>
+                        <ul class="list-disc mt-3 pl-8">
+                          <li class="font-normal text-sm text-[#585858]">${item.integrations[0]}</li>
+                          <li class="font-normal text-sm text-[#585858]">${item.integrations[1]}</li>
+                          <li class="font-normal text-sm text-[#585858]">${item.integrations[2]}</li>
                         </ul>
                       </div>
                     </div>
                   </div>
-                  <div class="bg-gray-300 p-4 w-[50%] " style="background: #FFFFFF;border: 1px solid #E7E7E7;
+                  <div class="bg-gray-300 p-4 md:w-[50%] " style="background: #FFFFFF;border: 1px solid #E7E7E7;
                      border-radius: 16px;" id="modal-id-2">
-                     <div class=" " >
-                      <p class="relative bg-[#EB5757] ml-48 rounded" style="width: 140px;height: 32px;"></p>
-                      <img class="rounded w-full relative" src="triangle.png" alt="">
-                    </div>
+                    <div class="">
+                      <div style="position: relative;">
+                        <img class="rounded w-full" src="${item.image_link[0]}" alt="">
+                       <div style="position: absolute; top: 12%; right: 2%; ">
+                        <span class="p-3 rounded"  style="color: white; background-color: #EB5757; font-weight: bold;">Some text</span>
+                       </div>
+                      </div>
+                   </div>
                     <h3 class="mt-4 mb-4 text-center">Lorem ipsum dolor sit amet.</h3>
                     <p class="text-center">consectetur adipisicing elit. Explicabo, deleniti?</p>
                   </div>
 
   `;
-
-}
+};
 loadItems();

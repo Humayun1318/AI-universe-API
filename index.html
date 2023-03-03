@@ -40,8 +40,10 @@
     <main class="mt-4">
       <section
         id="items-container"
-        class="w-[80%] mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-4"
-      ></section>
+        class="w-[80%] mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+     </section>
+
+<!-- Show more button -->
       <div class="flex justify-center">
         <button
           id="show-more"
@@ -51,17 +53,25 @@
           Show all
         </button>
       </div>
+
       <!-- modal -->
       <section class="">
         <div
-          class="hidden  overflow-x-hidden overflow-y-auto fixed  inset-0 z-50 outline-none 
+          class="hidden pr-8 pt-48 md:pt-0 pl-8 overflow-x-hidden overflow-y-auto fixed  inset-0 z-50 outline-none 
           focus:outline-none justify-center items-center "
-          id="modal-id"
-        >
-          <div class="relative  w-auto my-6 mx-auto max-w-3xl">
+          id="modal-id">
+          <div class=" w-auto my-4 mx-auto max-w-3xl" >
             <!--content-->
-            <button
-                  class="md:ml-96 md:pl-96 text-red-500 text-4xl  
+            
+               
+            
+            <div
+              class="border-0  rounded-lg shadow-lg relative flex flex-col w-full bg-white 
+              outline-none focus:outline-none"
+            style="position: relative;">
+            <div class="bg-[#EB5757] rounded" style="position: absolute; top: -5%; right: -2% ; ">
+                 <button
+                  class=" text-white  p-2  
                     "
                   onclick="toggleModal('modal-id')"
                 >
@@ -69,21 +79,17 @@
                     <i class="fa-solid fa-xmark"></i>
                   </span>
                 </button>
-            
-            <div
-              class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white 
-              outline-none focus:outline-none"
-            >
+            </div>
               <!--header-->
               <div
-                class="flex items-start justify-between p-5 border-b border-solid 
+                class="flex items-start justify-between p-3 border-b border-solid 
                 border-slate-200 rounded-t"
               >
-                <h3 class="text-3xl font-semibold">Modal Title</h3>
+                <h3 class="text-2xl font-semibold" id="modal-title"></h3>
                 
               </div>
               <!--body-->
-              <div class="relative p-6 md:flex md:flex-row gap-4" id="deatils">
+              <div class="relative p-2 md:flex md:flex-row gap-4" id="deatils">
                 
                   <!-- <div class="bg-blue-400 p-4 w-[50%]" style="background: rgba(235, 87, 87, 0.05);
                     border: 1px solid #EB5757;border-radius: 16px;" id="modal-id-1">
@@ -126,8 +132,8 @@
                   </div> -->
               </div>
               <!--footer-->
-              <div
-                class="flex items-center justify-end p-6 border-t border-solid border-slate-200   
+              <!-- <div
+                class="flex items-center justify-end p-2 border-t border-solid border-slate-200   
                  rounded-b"
               >
                 <button
@@ -139,7 +145,7 @@
                   Close
                 </button>
                 
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
