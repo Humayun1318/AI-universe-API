@@ -83,15 +83,17 @@ function toggleModal(modalID) {
 const displayItemDetails = (item) => {
   const modalTitle = document.getElementById("modal-title");
   modalTitle.innerText = item.tool_name;
-  const detailsDiv = document.getElementById("deatils");
+  const detailsDiv = document.getElementById("details");
   detailsDiv.innerHTML = `
-  <div class="bg-blue-400 p-4 md:w-[50%]" style="background: rgba(235, 87, 87, 0.05);
-                    border: 1px solid #EB5757;border-radius: 16px;" id="modal-id-1">
-                    <p>${item.description}</p>
-                    <div class="md:flex md:flex-row gap-2  my-4 ">
-                    <p class="p-2 text-[#03A30A] font-bold text-sm text-center" style="background: #FFFFFF;border-radius: 16px;">
+   <div class="bg-blue-400 p-4 md:w-[50%]" style="background: rgba(235, 87, 87, 0.05);
+      border: 1px solid #EB5757;border-radius: 16px;" id="modal-id-1">
+        <p>${item.description}</p>
+        <div class="md:flex md:flex-row gap-2  my-4 ">
+            <p class="p-2 mb-2  text-[#03A30A] font-bold text-sm text-center" style="background: #FFFFFF;
+              border-radius: 16px;">
                       <span>${item.pricing[0].price}</span><br><span>${item.pricing[0].plan}</span></p>
-                    <p class="p-2 text-[#F28927] font-bold text-sm text-center" style="background: #FFFFFF;border-radius: 16px;">
+                    <p class=" mb-2 p-2  text-[#F28927] font-bold text-sm text-center" style="background: #FFFFFF;
+                    border-radius: 16px;">
                       <span>${item.pricing[1].price}</span><br><span>${item.pricing[1].plan}</span></p>
                     <p class="p-2 text-[#EB5757] font-bold text-sm text-center" style="background: #FFFFFF;border-radius: 16px;">
                       <span>${item.pricing[2].price}</span><br><span>${item.pricing[2].plan}</span></p>
@@ -115,19 +117,20 @@ const displayItemDetails = (item) => {
                       </div>
                     </div>
                   </div>
-                  <div class="bg-gray-300 p-4 md:w-[50%] " style="background: #FFFFFF;border: 1px solid #E7E7E7;
-                     border-radius: 16px;" id="modal-id-2">
-                    <div class="">
-                      <div style="position: relative;">
-                        <img class="rounded w-full" src="${item.image_link[0]}" alt="">
-                       <div style="position: absolute; top: 12%; right: 2%; ">
-                        <span class="p-3 rounded"  style="color: white; background-color: #EB5757; font-weight: bold;">Some text</span>
-                       </div>
-                      </div>
-                   </div>
-                    <h3 class="mt-4 mb-4 text-center">Lorem ipsum dolor sit amet.</h3>
-                    <p class="text-center">consectetur adipisicing elit. Explicabo, deleniti?</p>
-                  </div>
+        <div class="bg-gray-300 p-4 md:w-[50%] mt-4 md:mt-0" style="background: #FFFFFF;border: 1px solid #E7E7E7;
+         border-radius: 16px;" id="modal-id-2">
+          <div class="">
+            <div style="position: relative;">
+              <img class="rounded w-full" src="${item.image_link[0]}" alt="">
+             <div style="position: absolute; top: 12%; right: 2%; ">
+                <span class="p-3 rounded"  style="color: white; background-color: #EB5757; font-weight: bold;">
+                ${item.accuracy.score}% accuracy</span>
+             </div>
+           </div>
+        </div>
+        <h3 class="mt-4 mb-4 text-center">Lorem ipsum dolor sit amet.</h3>
+        <p class="text-center">consectetur adipisicing elit. Explicabo, deleniti?</p>
+   </div>
 
   `;
 };
