@@ -52,14 +52,24 @@
         </button>
       </div>
       <!-- modal -->
-      <section class="fixed">
+      <section class="">
         <div
-          class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none 
-          focus:outline-none justify-center items-center"
+          class="hidden  overflow-x-hidden overflow-y-auto fixed  inset-0 z-50 outline-none 
+          focus:outline-none justify-center items-center "
           id="modal-id"
         >
-          <div class="relative w-auto my-6 mx-auto max-w-3xl">
+          <div class="relative  w-auto my-6 mx-auto max-w-3xl">
             <!--content-->
+            <button
+                  class="md:ml-96 md:pl-96 text-red-500 text-4xl  
+                    "
+                  onclick="toggleModal('modal-id')"
+                >
+                  <span>
+                    <i class="fa-solid fa-xmark"></i>
+                  </span>
+                </button>
+            
             <div
               class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white 
               outline-none focus:outline-none"
@@ -70,25 +80,23 @@
                 border-slate-200 rounded-t"
               >
                 <h3 class="text-3xl font-semibold">Modal Title</h3>
-                <button
-                  class="relative text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm 
-                   outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                  onclick="toggleModal('modal-id')"
-                >
-                  <span>
-                    <i class="fa-solid fa-xmark"></i>
-                  </span>
-                </button>
+                
               </div>
               <!--body-->
-              <div class="relative p-6 flex-auto">
-                <p class="my-4 text-slate-500 text-lg leading-relaxed">
-                  I always felt like I could do anything. That’s the main thing
-                  people are controlled by! Thoughts- their perception of
-                  themselves! They're slowed down by their perception of
-                  themselves. If you're taught you can’t do anything, you won’t
-                  do anything. I was taught I could do everything.
-                </p>
+              <div class="relative p-6 flex md:flex-row gap-4">
+                
+                  <div class="bg-blue-400 p-4 " style="background: rgba(235, 87, 87, 0.05);
+                    border: 1px solid #EB5757;border-radius: 16px;" id="modal-id-1">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, cumque.</p>
+
+
+                  </div>
+                  <div class="bg-gray-300 p-4 " style="background: #FFFFFF;border: 1px solid #E7E7E7;
+                     border-radius: 16px;" id="modal-id-2">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, illo.</p>
+
+                  </div>
+                
               </div>
               <!--footer-->
               <div
@@ -113,6 +121,9 @@
           id="modal-id-backdrop"
         ></div>
         
+      </section>
+      <section class="h-12 bg-blue-600">
+
       </section>
     </main>
 
