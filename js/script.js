@@ -51,33 +51,34 @@ const displayItems = (items) => {
         <div class="card-actions flex justify-between">
           <div>
             <h2 class=" text-[#111111] font-semibold text-xl mb-2">${item.name}</h2>
-            <p class="text-[#585858]"><i class="fa-solid fa-calendar-days mr-2"></i>${item.published_in}</p>
+            <p class="text-[#585858]"><i class="fa-solid fa-calendar-days mr-2"></i>${item.published_in} 
+             </p>
           </div>
           
-          <button type="button" onclick="" class="rounded-full text-[#eb5757]" data-modal-target="defaultModal" 
-          data-modal-toggle="defaultModal" 
           
-          style="background-color: #FEF7F7; 
-           width: 50px; height: 50px"; >
-            <i class="fa-solid fa-arrow-right"></i>
-          </button>
-          
-          
-
+         <button class="rounded-full text-[#eb5757]" type="button" 
+         onclick="loadItemsDetails('${item.id}')"style="background-color: #FEF7F7; 
+           width: 50px; height: 50px";>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
         </div>
       </div>
     `;
     itemsContainer.appendChild(itemDiv);
   });
 };
-// const loadItemsDetails = async (id) => {
-//   const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
-//   const res = await fetch(url);
-//   const data = await res.json();
-//   console.log(data);
-// };
-
-
-
+const loadItemsDetails = async (id) => {
+  const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  console.log(data);
+  toggleModal("modal-id");
+};
+function toggleModal(modalID) {
+  document.getElementById(modalID).classList.toggle("hidden");
+  document.getElementById(modalID + "-backdrop").classList.toggle("hidden");
+  document.getElementById(modalID).classList.toggle("flex");
+  document.getElementById(modalID + "-backdrop").classList.toggle("flex");
+}
 
 loadItems();
