@@ -1,14 +1,16 @@
 const loadItems = async () => {
+  
   const url = `https://openapi.programming-hero.com/api/ai/tools`;
   const res = await fetch(url);
   const data = await res.json();
 
-  //   const itemsContainer = document.getElementById("items-container");
+  showLoader();
   const showAllButton = document.getElementById("show-more");
   let items = data.data.tools.slice(0, 6); // initially show only 6 items
-
+  
   // update items array and re-render items when "show all" button is clicked
   showAllButton.addEventListener("click", () => {
+    showLoader();
     items = data.data.tools;
     displayItems(items);
     showAllButton.classList.add("hidden");
@@ -18,6 +20,7 @@ const loadItems = async () => {
 };
 
 const displayItems = (items) => {
+  
   const itemsContainer = document.getElementById("items-container");
   itemsContainer.innerHTML = ""; // clear existing items before re-rendering
 
@@ -43,20 +46,25 @@ const displayItems = (items) => {
         <h2 class="card-title text-[#111111] not-italic font-semibold text-xl">Features</h2>
         <p>
           <ol class="list-decimal pl-8 text-[#585858] mt-2">
-            <li class="mb-1"> ${item.features[0]}</li>
-            <li class="mb-1">${item.features[1]} </li>
-            <li> ${item.features[2]}</li>
+            <li class="mb-1"> ${
+              item.features[0] ? item.features[0] : "No feature"
+            }</li>
+            <li class="mb-1">${
+              item.features[1] ? item.features[1] : "No feature"
+            } </li>
+            <li> ${item.features[2] ? item.features[2] : "No feature"}</li>
          </ol>
       </p>
       <hr class="border-b border-b-2 border-gray-400 my-4" >
         <div class="card-actions flex justify-between">
           <div>
-            <h2 class=" text-[#111111] font-semibold text-xl mb-2">${item.name}</h2>
-            <p class="text-[#585858]"><i class="fa-solid fa-calendar-days mr-2"></i>${item.published_in} 
+            <h2 class=" text-[#111111] font-semibold text-xl mb-2">${
+              item.name ? item.name : "No name"
+            }</h2>
+            <p class="text-[#585858]"><i class="fa-solid fa-calendar-days mr-2"></i>
+            ${item.published_in ? item.published_in : "No published date"} 
              </p>
           </div>
-          
-          
          <button class="rounded-full text-[#eb5757]" type="button" 
          onclick="loadItemsDetails('${item.id}')"
          style="background-color: #FEF7F7; 
@@ -68,6 +76,7 @@ const displayItems = (items) => {
     `;
     itemsContainer.appendChild(itemDiv);
   });
+  hideLoader();
 };
 const loadItemsDetails = async (id) => {
   console.log(id);
@@ -83,6 +92,15 @@ function toggleModal(modalID) {
   document.getElementById(modalID).classList.toggle("flex");
   document.getElementById(modalID + "-backdrop").classList.toggle("flex");
 }
+const loader = document.getElementById("loader");
+function showLoader() {
+  loader.style.display = "block";
+}
+
+function hideLoader() {
+  loader.style.display = "none";
+}
+
 const displayItemDetails = (item) => {
   const modalTitle = document.getElementById("modal-title");
   modalTitle.innerText = item?.tool_name;
@@ -102,7 +120,8 @@ const displayItemDetails = (item) => {
                       <span>${
                         item?.pricing ? item.pricing[0]?.plan : "No Plan"
                       }</span></p>
-                    <p class=" mb-2 p-2  text-[#F28927] font-bold text-sm text-center" style="background: #FFFFFF;
+                    <p class=" mb-2 p-2  text-[#F28927] font-bold text-sm text-center" 
+                    style="background: #FFFFFF;
                     border-radius: 16px;">
                       <span>${
                         item?.pricing ? item.pricing[1].price : "No pricing"
@@ -110,7 +129,8 @@ const displayItemDetails = (item) => {
                       <span>${
                         item?.pricing ? item.pricing[1].plan : "No plan"
                       }</span></p>
-                    <p class="p-2 text-[#EB5757] font-bold text-sm text-center" style="background: #FFFFFF;border-radius: 16px;">
+                    <p class="p-2 text-[#EB5757] font-bold text-sm text-center" 
+                    style="background: #FFFFFF;border-radius: 16px;">
                       <span>${
                         item?.pricing ? item.pricing[2].price : "No pricing"
                       }</span><br>
@@ -175,8 +195,10 @@ const displayItemDetails = (item) => {
              <div style="position: absolute; top: 12%; right: 2%; ">
                 <span class="p-3 rounded"  style="color: white; background-color: #EB5757; font-weight: bold;">
                 ${
-                  item?.accuracy.score ? item.accuracy.score : "No score"
-                }% accuracy</span>
+                  item?.accuracy.score
+                    ? item.accuracy.score + " " + "% accuracy"
+                    : "No score"
+                }</span>
              </div>
            </div>
         </div>
@@ -196,4 +218,4 @@ const displayItemDetails = (item) => {
 
   `;
 };
-loadItems((id = "01"));
+loadItems();
