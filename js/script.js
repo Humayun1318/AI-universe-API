@@ -15,6 +15,12 @@ const loadItems = async () => {
     displayItems(items);
     showAllButton.classList.add("hidden");
   });
+  const sorting = document.getElementById("shorting");
+  sorting.addEventListener("click", function () {
+    displayItems(
+      items.sort((a, b) => new Date(b.published_in) - new Date(a.published_in))
+    );
+  });
 
   displayItems(items);
 };
@@ -23,7 +29,7 @@ const displayItems = (items) => {
   
   const itemsContainer = document.getElementById("items-container");
   itemsContainer.innerHTML = ""; // clear existing items before re-rendering
-let counter = 1;
+
   items.forEach((item) => {
     // console.log(item);
     
@@ -219,4 +225,5 @@ const displayItemDetails = (item) => {
 
   `;
 };
+
 loadItems();
