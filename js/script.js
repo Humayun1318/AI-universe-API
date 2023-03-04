@@ -1,5 +1,4 @@
 const loadItems = async () => {
-  
   const url = `https://openapi.programming-hero.com/api/ai/tools`;
   const res = await fetch(url);
   const data = await res.json();
@@ -7,7 +6,7 @@ const loadItems = async () => {
   showLoader();
   const showAllButton = document.getElementById("show-more");
   let items = data.data.tools.slice(0, 6); // initially show only 6 items
-  
+
   // update items array and re-render items when "show all" button is clicked
   showAllButton.addEventListener("click", () => {
     showLoader();
@@ -26,13 +25,10 @@ const loadItems = async () => {
 };
 
 const displayItems = (items) => {
-  
   const itemsContainer = document.getElementById("items-container");
   itemsContainer.innerHTML = ""; // clear existing items before re-rendering
 
   items.forEach((item) => {
-    // console.log(item);
-    
     // create item card and append to container
     const itemDiv = document.createElement("div");
     itemDiv.classList.add(
@@ -107,11 +103,11 @@ function toggleModal(modalID) {
   document.getElementById(modalID).classList.toggle("flex");
   document.getElementById(modalID + "-backdrop").classList.toggle("flex");
 }
+
 const loader = document.getElementById("loader");
 function showLoader() {
   loader.style.display = "block";
 }
-
 function hideLoader() {
   loader.style.display = "none";
 }
@@ -140,7 +136,7 @@ const displayItemDetails = (item) => {
                         item?.pricing
                           ? item.pricing[0]?.plan
                             ? `<span>${item.pricing[0].plan}</span>`
-                            :"No Plan"
+                            : "No Plan"
                           : "No plan"
                       }</p>
                     <p class=" mb-2 p-2  text-[#F28927] font-bold text-sm text-center" 
@@ -249,7 +245,7 @@ const displayItemDetails = (item) => {
         ${
           item?.input_output_examples
             ? item.input_output_examples[0].input
-            : "No Question"
+            : "<br>"
         }</h3>
         <p class="text-center  text-xs text-[#585858]  font-normal">
         ${
@@ -261,5 +257,4 @@ const displayItemDetails = (item) => {
 
   `;
 };
-
 loadItems();

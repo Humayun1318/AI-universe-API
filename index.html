@@ -22,8 +22,10 @@
       }
     </style>
   </head>
+
   <!-- body -->
   <body class="py-8">
+    <!-- Header -->
     <header class="container mx-auto mb-12">
       <h2 class="text-5xl font-semibold text-center pb-4 text-black-500">
         AI Universe Hub
@@ -37,12 +39,15 @@
         </button>
       </div>
     </header>
+
     <!-- main -->
     <main class="mt-4">
+      <!-- Card section for appendChild -->
       <section
         id="items-container"
         class="w-[80%] mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-4"
       ></section>
+
       <!-- Spinner -->
       <section>
         <div class=" text-center max-w-[10%] py-4 mt-4 mx-auto" id="loader">
@@ -113,17 +118,20 @@
                   </span>
                 </button>
               </div>
+
               <!--header-->
               <div
                 class="flex items-start justify-between p-3 border-b border-solid border-slate-200 rounded-t"
               >
                 <h3 class="text-2xl font-semibold" id="modal-title"></h3>
               </div>
-              <!--body-->
+
+              <!--body which is dynamically set by using javaScript-->
               <div
                 class="relative p-2 md:flex md:flex-row gap-4"
                 id="details"
               ></div>
+
               <!--footer-->
               <div
                 class="flex items-center justify-end p-2 border-t border-solid border-slate-200   
@@ -142,6 +150,7 @@
             </div>
           </div>
         </div>
+        
         <div
           class="hidden opacity-25 fixed inset-0 z-40 bg-black"
           id="modal-id-backdrop"
