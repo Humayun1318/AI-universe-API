@@ -53,13 +53,21 @@ const displayItems = (items) => {
         <h2 class="card-title text-[#111111] not-italic font-semibold text-xl">Features</h2>
         <p>
           <ol class="list-decimal pl-8 text-[#585858] mt-2">
-            <li class="mb-1">${
-              item.features[0] ? item.features[0] : "No feature"
-            }</li>
-            <li class="mb-1">${
-              item.features[1] ? item.features[1] : "No feature"
-            } </li>
-            <li> ${item.features[2] ? item.features[2] : "No feature"}</li>
+            ${
+              item.features[0]
+                ? `<li class="mb-1">${item.features[0]}</li>`
+                : "No feature"
+            }
+           ${
+             item.features[1]
+               ? `<li class="mb-1">${item.features[1]}</li>`
+               : "`<br>`"
+           }
+            ${
+              item.features[2]
+                ? `<li class="mb-1">${item.features[2]}</li>`
+                : "<br>"
+            }
          </ol>
       </p>
       <hr class="border-b border-b-2 border-gray-400 my-4" >
@@ -121,75 +129,101 @@ const displayItemDetails = (item) => {
         <div class="md:flex md:flex-row gap-2  my-4 ">
             <p class="p-2 mb-2  text-[#03A30A] font-bold text-sm text-center" style="background: #FFFFFF;
               border-radius: 16px;">
-                      <span>${
-                        item?.pricing ? item.pricing[0]?.price : "No pricing"
-                      }</span><br> 
-                      <span>${
-                        item?.pricing ? item.pricing[0]?.plan : "No Plan"
-                      }</span></p>
+                      ${
+                        item?.pricing
+                          ? item.pricing[0].price
+                            ? `<span>${item.pricing[0].price}</span><br>`
+                            : "No pricing"
+                          : "No pricing "
+                      } 
+                      ${
+                        item?.pricing
+                          ? item.pricing[0]?.plan
+                            ? `<span>${item.pricing[0].plan}</span>`
+                            :"No Plan"
+                          : "No plan"
+                      }</p>
                     <p class=" mb-2 p-2  text-[#F28927] font-bold text-sm text-center" 
                     style="background: #FFFFFF;
                     border-radius: 16px;">
-                      <span>${
-                        item?.pricing ? item.pricing[1].price : "No pricing"
-                      }</span><br>
-                      <span>${
-                        item?.pricing ? item.pricing[1].plan : "No plan"
-                      }</span></p>
+                      ${
+                        item?.pricing
+                          ? item.pricing[1].price
+                            ? `<span>${item.pricing[1].price}</span><br>`
+                            : "No pricing"
+                          : "No pricing "
+                      } 
+                      ${
+                        item?.pricing
+                          ? item.pricing[1]?.plan
+                            ? `<span>${item.pricing[1].plan}</span><br>`
+                            : "No Plan"
+                          : "No plan"
+                      }</p>
                     <p class="p-2 text-[#EB5757] font-bold text-sm text-center" 
                     style="background: #FFFFFF;border-radius: 16px;">
-                      <span>${
-                        item?.pricing ? item.pricing[2].price : "No pricing"
-                      }</span><br>
-                      <span>${
-                        item?.pricing ? item.pricing[2].plan : "No plan"
-                      }</span></p>
+                      ${
+                        item?.pricing
+                          ? item.pricing[2].price
+                            ? `<span>${item.pricing[2].price}</span><br>`
+                            : "No pricing"
+                          : "No pricing "
+                      } 
+                      ${
+                        item?.pricing
+                          ? item.pricing[2]?.plan
+                            ? `<span>${item.pricing[2].plan}</span><br>`
+                            : "No Plan"
+                          : "No plan"
+                      }</p>
                     </div>
                     <div class="md:grid md:grid-cols-2 w-full  gap-4">
                       <div class="">
                         <h4 class="font-semibold text-base text-[#111111]">Feature</h4>
                         <ul class="list-disc mt-3  pl-8">
-                          <li class="font-normal text-sm text-[#585858]">
                           ${
                             item?.features
-                              ? item?.features[1]?.feature_name
+                              ? `<li class="font-normal text-sm text-[#585858]"> ${item.features[1].feature_name}</li>`
                               : "No Feature"
-                          }</li>
-                          <li class="font-normal text-sm text-[#585858]">
+                          }
                           ${
                             item?.features
-                              ? item?.features[2]?.feature_name
-                              : "No feature"
-                          }</li>
-                          <li class="font-normal text-sm text-[#585858]">
+                              ? `<li class="font-normal text-sm text-[#585858]"> ${item.features[2].feature_name}</li>`
+                              : "No Feature"
+                          }
                           ${
                             item?.features
-                              ? item?.features[3]?.feature_name
-                              : "No feature"
-                          }</li>
+                              ? `<li class="font-normal text-sm text-[#585858]"> ${item.features[3].feature_name}</li>`
+                              : "No Feature"
+                          }
                         </ul>
                       </div>
                       <div class=" ">
                         <h4 class="font-semibold text-base text-[#111111]">Integration</h4>
                         <ul class="list-disc mt-3 pl-8">
-                          <li class="font-normal text-sm text-[#585858]">
                           ${
                             item?.integrations
                               ? item?.integrations[0]
-                              : "No data found"
-                          }</li>
-                          <li class="font-normal text-sm text-[#585858]">
+                                ? `<li class="font-normal text-sm text-[#585858]">${item.integrations[0]}</li>`
+                                : "No data found"
+                              : "No Data found"
+                          }
+                          
                           ${
                             item?.integrations
                               ? item?.integrations[1]
-                              : "No data found"
-                          }</li>
-                          <li class="font-normal text-sm text-[#585858]">
+                                ? `<li class="font-normal text-sm text-[#585858]">${item.integrations[1]}</li>`
+                                : ""
+                              : ""
+                          }
+                          
                           ${
                             item?.integrations
                               ? item?.integrations[2]
-                              : "No data found"
-                          }</li>
+                                ? `<li class="font-normal text-sm text-[#585858]">${item.integrations[2]}</li>`
+                                : ""
+                              : ""
+                          }
                         </ul>
                       </div>
                     </div>
@@ -199,13 +233,15 @@ const displayItemDetails = (item) => {
           <div class="">
             <div style="position: relative;">
               <img class="rounded w-full" src="${item?.image_link[0]}" alt="">
-             <div style="position: absolute; top: 12%; right: 2%; ">
-                <span class="p-3 rounded"  style="color: white; background-color: #EB5757; font-weight: bold;">
+             <div style="position: absolute; top: 12%; right: 2%; "> 
                 ${
-                  item?.accuracy.score
-                    ? item.accuracy.score + " " + "% accuracy"
-                    : "No score"
-                }</span>
+                  item?.accuracy
+                    ? item.accuracy.score
+                      ? `<span class="p-3 rounded"  style="color: white; background-color: #EB5757; font-weight: bold;">
+                    ${item.accuracy.score + "" + "% accuracy"}</span>`
+                      : ""
+                    : ""
+                }
              </div>
            </div>
         </div>
